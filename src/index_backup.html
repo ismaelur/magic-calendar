@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Mágico 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <header>
+        <h1>Calendario Mágico 2026</h1>
+        <p class="subtitle">Fases Lunares y Alineaciones Planetarias &bull; Uruguay</p>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="year-select" class="toggle-label">Año</label>
+                <select id="year-select" class="year-select">
+                    <option value="2025">2025</option>
+                    <option value="2026" selected>2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                </select>
+            </div>
+
+            <div class="control-group toggle-container">
+                <span class="toggle-label">Geocéntrico</span>
+                <label class="switch">
+                    <input type="checkbox" id="geo-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label">Topocéntrico</span>
+            </div>
+        </div>
+        <p class="coord-info" id="coord-info">Centro de la Tierra (Astrológico)</p>
+    </header>
+
+    <main>
+        <section id="moon-phases">
+            <h2>Fases Lunares</h2>
+            <div class="moon-grid" id="moon-grid">
+                <!-- Moon phases will be injected here -->
+            </div>
+        </section>
+
+        <section id="alignments">
+            <h2>Alineaciones Nocturnas</h2>
+            <div class="timeline" id="alignment-timeline">
+                <!-- Alignments will be injected here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Hecho con magia y código.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

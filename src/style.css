@@ -1,0 +1,457 @@
+:root {
+    --bg-color: #0b0d17;
+    --text-color: #e0e0e0;
+    --accent-color: #d4af37; /* Gold */
+    --moon-glow: rgba(255, 255, 255, 0.6);
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Background Animation */
+.stars, .twinkling {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.stars {
+    background: #000 url('http://www.script-tutorials.com/demos/360/images/stars.png') repeat top center;
+    z-index: -2;
+}
+
+.twinkling {
+    background: transparent url('http://www.script-tutorials.com/demos/360/images/twinkling.png') repeat top center;
+    z-index: -1;
+    animation: move-twink-back 200s linear infinite;
+}
+
+@keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+
+h1, h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+header {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    margin-top: 0.5rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 4rem;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Moon Grid */
+.moon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.moon-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.moon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+    border-color: var(--accent-color);
+}
+
+.moon-icon {
+    width: 60px;
+    height: 60px;
+    background: #333; /* Placeholder for moon image */
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    box-shadow: 0 0 15px var(--moon-glow);
+    background: radial-gradient(circle at 30% 30%, #fff, #ccc 20%, #333 80%);
+}
+
+.phase-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.phase-date {
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+/* Alignments Timeline */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--accent-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.alignment-card {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.alignment-card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: var(--bg-color);
+    border: 3px solid var(--accent-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.left {
+    left: 0;
+    text-align: right;
+}
+
+.right {
+    left: 50%;
+}
+
+.left::after {
+    right: -10px;
+}
+
+.right::after {
+    left: -10px;
+}
+
+.content {
+    padding: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    backdrop-filter: blur(5px);
+}
+
+.planet-name {
+    color: var(--accent-color);
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.alignment-time {
+    font-size: 0.9rem;
+    color: #bbb;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #555;
+    font-size: 0.8rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .timeline::after {
+    left: 31px;
+  }
+  
+  .alignment-card {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+  
+  .alignment-card::after {
+    left: 21px;
+  }
+  
+  .left::after, .right::after {
+    left: 21px;
+  }
+  
+  .right {
+    left: 0%;
+  }
+
+  .left {
+    text-align: left;
+  }
+}
+/* Toggle Switch */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    gap: 1rem;
+}
+
+.toggle-label {
+    font-size: 0.9rem;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--card-bg);
+    transition: .4s;
+    border: 1px solid var(--card-border);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--accent-color);
+    transition: .4s;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+input:checked+.slider {
+    background-color: var(--card-bg);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--accent-color);
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.coord-info {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 0.5rem;
+    font-style: italic;
+}/* Controls Container */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.year-select {
+    background: var(--card-bg);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.year-select:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--accent-color);
+}
+
+.toggle-container {
+    margin-top: 0;
+    /* Override previous margin */
+}
+
+/* Highlighted Moon Card */
+.moon-card.highlight {
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    position: relative;
+    cursor: help;
+}
+
+/* Tooltip */
+.moon-card .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 10;
+    bottom: 110%;
+    /* Place above the card */
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 1px solid var(--accent-color);
+    font-size: 0.8rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.moon-card .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--accent-color) transparent transparent transparent;
+}
+
+.moon-card:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}/* Gold Highlight (Exact Date) */
+.moon-card.gold-border {
+    border: 3px solid var(--accent-color);
+    /* Gold */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+/* Silver Highlight (In Phase Range) */
+.moon-card.silver-border {
+    border: 3px solid #c0c0c0;
+    /* Silver */
+    box-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+}
+
+/* Double Highlight (Both) */
+.moon-card.double-border {
+    border: 3px solid #c0c0c0;
+    /* Silver Inner */
+    box-shadow:
+        0 0 0 4px var(--accent-color),
+        /* Gold Outer pseudo-border */
+        0 0 20px rgba(212, 175, 55, 0.6);
+    margin: 4px;
+    /* Adjust spacing for outer expansion */
+}
+
+/* Tooltip adjustments */
+.moon-card .tooltip-text {
+    width: 220px;
+    bottom: 120%;
+}.calc-btn {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    /* Dark text on gold */
+    border: none;
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.calc-btn:hover {
+    background-color: #fff;
+    box-shadow: 0 0 10px #fff;
+    color: #000;
+}
+
+.calc-btn:active {
+    transform: scale(0.95);
+}

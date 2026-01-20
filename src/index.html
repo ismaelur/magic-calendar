@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Mágico 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <header>
+        <h1>Calendario Mágico 2026</h1>
+        <p class="subtitle">Fases Lunares y Alineaciones Planetarias &bull; Uruguay</p>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="year-select" class="toggle-label">Año</label>
+                <input type="number" id="year-select" class="year-select" value="2026" min="1" max="9999">
+                <button id="calc-btn" class="calc-btn">Calcular</button>
+            </div>
+
+            <div class="control-group toggle-container">
+                <span class="toggle-label">Geocéntrico</span>
+                <label class="switch">
+                    <input type="checkbox" id="geo-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label">Topocéntrico</span>
+            </div>
+        </div>
+        <p class="coord-info" id="coord-info">Centro de la Tierra (Astrológico)</p>
+    </header>
+
+    <main>
+        <!-- Moon Phase Grid -->
+        <section id="moon-grid" class="moon-grid">
+            <!-- Cards will be injected by JS -->
+        </section>
+
+        <!-- Timeline/List of Alignments -->
+        <section class="alignment-container">
+            <h2>Próximas Alineaciones</h2>
+            <div id="alignment-timeline" class="timeline">
+                <!-- Data will be injected by JS -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Hecho con magia y código.</p>
+    </footer>
+
+    <!-- Astronomy Library Support for CommonJS -->
+    <script>var exports = {}; var module = { exports: exports };</script>
+    <script src="astronomy.min.js"></script>
+    <script>
+        // If the library attached to exports, move it to window
+        if (!window.Astronomy && exports.Astronomy) {
+            window.Astronomy = exports.Astronomy;
+        } else if (!window.Astronomy && module.exports.Astronomy) {
+            window.Astronomy = module.exports.Astronomy;
+        } else if (!window.Astronomy && typeof Astronomy === 'undefined') {
+            // Some versions might export as default on module.exports
+            if (module.exports && typeof module.exports.MakeTime === 'function') {
+                window.Astronomy = module.exports;
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker Registered'))
+                .catch(err => console.log('SW Fail', err));
+        }
+    </script>
+</body>
+
+</html>

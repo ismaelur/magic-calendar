@@ -1,0 +1,16 @@
+{
+  "name": "Calendario Mágico",
+  "short_name": "MagicCal",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#D4AF37",
+  "description": "Fases lunares y alineaciones planetarias para Uruguay.",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
